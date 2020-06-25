@@ -8,8 +8,9 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: '', component: ProfileComponent },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent },
+      { path: '',  redirectTo: 'profile', pathMatch: 'full' },
+      { path: '**',  redirectTo: 'profile', pathMatch: 'full' }
     ])
   ]
 })
