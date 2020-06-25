@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     RouterModule.forChild([
       { path: 'profile', component: ProfileComponent },
-      { path: '',  redirectTo: 'profile', pathMatch: 'full' },
+      { path: '', component: ProfileComponent },
       { path: '**',  redirectTo: 'profile', pathMatch: 'full' }
     ])
   ]
