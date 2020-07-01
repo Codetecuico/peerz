@@ -26,5 +26,3 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - working-directory: peerz 
       run: npm install
-    - working-directory: peerz
-      run: ng build
