@@ -22,7 +22,7 @@
         <a class="list-group-item disabled bg-light" *ngIf="isLoggedIn">
           <div><span class="fa fa-user-circle"></span> {{ userName }}</div>
         </a>
-        <a class="list-group-item list-group-item-action" [routerLink]="['/login']" routerLinkActive='active' *ngIf="!isLoggedIn"><span class="fa fa-sign-in"></span> Login</a>
+        <a class="list-group-item list-group-item-action" [routerLink]="['/login']" routerLinkActive='active' *ngIf="!isLoggedIn"><span class="fas fa-sign-in-alt"></span> Login</a>
         <a class="list-group-item list-group-item-action" [routerLink]="['/profile']" routerLinkActive='active'>My Profile</a>
         <a class="list-group-item list-group-item-action" [routerLink]="['/dashboard']" routerLinkActive='active'>Dashboard</a>
       </div>
