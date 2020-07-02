@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from './user/auth.service';
 
@@ -10,7 +11,8 @@ import { AuthService } from './user/auth.service';
 export class AppComponent {
   title = 'Peerz';
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService,
+              private router: Router){}
 
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn;
@@ -21,5 +23,10 @@ export class AppComponent {
       return this.authService.currentUser.userName;
     }
     return '';
+  }
+
+  logOut(): void {
+    this.authService.logout();
+    this.router.navigateByUrl('/');
   }
 }
