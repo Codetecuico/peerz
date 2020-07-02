@@ -1,26 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module'
 import { ProfileComponent } from './profile.component';
-import {LoginComponent } from './login.component';
+import { LoginComponent } from './login.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
+    SharedModule,
     RouterModule.forChild([
       { path: 'profile', component: ProfileComponent },
-      { path: 'login', component: LoginComponent },
-      { path: '', redirectTo: 'profile', pathMatch: 'full' },
-      { path: '**',  redirectTo: 'profile', pathMatch: 'full' }
+      { path: 'login', component: LoginComponent }
     ])
   ],
   declarations: [
     ProfileComponent,
     LoginComponent
-  ],
-  exports: [FormsModule]
+  ]
 })
 export class UserModule { }

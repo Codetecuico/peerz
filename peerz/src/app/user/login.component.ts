@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { AuthService } from './auth.service';
 
@@ -11,8 +12,13 @@ export class LoginComponent {
   errorMessage: string;
   pageTitle = 'Log In';
 
-  constructor(private authService: AuthService,
+  constructor(private titleService: Title,
+              private authService: AuthService,
               private router: Router) { }
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Peerz | Login');
+  }
 
   login(loginForm: NgForm) {
     if (loginForm && loginForm.valid) {
@@ -24,7 +30,7 @@ export class LoginComponent {
       if (this.authService.redirectUrl) {
         this.router.navigateByUrl(this.authService.redirectUrl);
       } else {
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/']);
       }
     } else {
       this.errorMessage = 'Please enter a user name and password.';
