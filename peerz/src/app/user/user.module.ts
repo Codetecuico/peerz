@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module'
 import { ProfileComponent } from './profile.component';
 import { LoginComponent } from './login.component';
+import { AuthGuard } from './auth.guard';
+
+const routes: Routes = [
+  { path: 'profile', 
+    canActivate: [AuthGuard],
+    component: ProfileComponent 
+  },
+  { path: 'login', component: LoginComponent }
+];
 
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forChild([
-      { path: 'profile', component: ProfileComponent },
-      { path: 'login', component: LoginComponent }
-    ])
+    RouterModule.forChild(routes)
   ],
   declarations: [
     ProfileComponent,
