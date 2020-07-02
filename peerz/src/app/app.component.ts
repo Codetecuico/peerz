@@ -20,7 +20,7 @@ export class AppComponent {
 
   get userName(): string {
     if (this.authService.currentUser) {
-      return this.authService.currentUser.userName;
+      return this.toTitleCase(this.authService.currentUser.userName);
     }
     return '';
   }
@@ -29,4 +29,13 @@ export class AppComponent {
     this.authService.logout();
     this.router.navigateByUrl('/');
   }
+
+  toTitleCase(str: string): string {
+    return str.replace(
+        /\w\S*/g,
+        function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+    );
+}
 }

@@ -4,7 +4,7 @@
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav ml-auto">
       <li class="navbar-text" *ngIf="isLoggedIn">
-        <div><span class="fa fa-user-circle"></span> {{ userName }}</div>
+        <div><span class="fa fa-user-circle"></span> {{ userName }} </div>
       </li>
       <li class="nav-item" *ngIf="!isLoggedIn">
         <a class="nav-link" [routerLink]="['/login']">Log In</a>
@@ -17,13 +17,17 @@
 </nav>
 <div class="container-fluid content">
   <div class="row my-3">
-    <div class="col-2">
-      <div class="nav flex-column nav-pills" aria-orientation="vertical">
-        <a class="nav-link" [routerLink]="['/profile']" routerLinkActive='active'>My Profile</a>
-        <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive='active'>Dashboard</a>
+    <div class="col-md-2">
+      <div class="list-group" aria-orientation="vertical">
+        <a class="list-group-item disabled bg-light" *ngIf="isLoggedIn">
+          <div><span class="fa fa-user-circle"></span> {{ userName }}</div>
+        </a>
+        <a class="list-group-item list-group-item-action" [routerLink]="['/login']" routerLinkActive='active' *ngIf="!isLoggedIn"><span class="fa fa-sign-in"></span> Login</a>
+        <a class="list-group-item list-group-item-action" [routerLink]="['/profile']" routerLinkActive='active'>My Profile</a>
+        <a class="list-group-item list-group-item-action" [routerLink]="['/dashboard']" routerLinkActive='active'>Dashboard</a>
       </div>
     </div>
-    <div class="col-10">
+    <div class="col-md-10">
       <router-outlet></router-outlet>
     </div>
   </div>
