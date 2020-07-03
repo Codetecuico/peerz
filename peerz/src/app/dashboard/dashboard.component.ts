@@ -6,11 +6,12 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  pageHeader: string = "Dashboard";
 
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Peerz | Dashboard');
+    this.titleService.setTitle('Peerz | ' + this.pageHeader);
   }
 
 }
