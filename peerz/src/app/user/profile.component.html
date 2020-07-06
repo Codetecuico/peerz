@@ -10,12 +10,9 @@
                 type="text"
                 placeholder="First Name (required)"
                 formControlName="firstName"
-                [ngClass]="{'is-invalid': (profileForm.get('firstName').touched ||
-                                            profileForm.get('firstName').dirty) &&
-                                            !profileForm.get('firstName').valid }" />
+                [ngClass]="{'is-invalid': displayMessage.firstName}" />
         <span class="invalid-feedback">
-            <span *ngIf="profileForm.get('firstName').errors?.required">Please enter your first name.</span>
-            <span *ngIf="profileForm.get('firstName').errors?.minlength">The first name must be longer than 3 characters.</span>
+            {{displayMessage.firstName}}
         </span>
         </div>
     </div>
@@ -28,12 +25,9 @@
                 type="text"
                 placeholder="Last Name (required)"
                 formControlName="lastName"
-                [ngClass]="{'is-invalid': (profileForm.get('lastName').touched ||
-                                            profileForm.get('lastName').dirty) &&
-                                            !profileForm.get('lastName').valid }" />
+                [ngClass]="{'is-invalid': displayMessage.lastName}" />
         <span class="invalid-feedback">
-            <span *ngIf="profileForm.get('lastName').errors?.required">Please enter your last name.</span>
-            <span *ngIf="profileForm.get('lastName').errors?.maxlength">The last name must be less than 50 characters.</span>
+            {{displayMessage.lastName}}
         </span>
         </div>
     </div>

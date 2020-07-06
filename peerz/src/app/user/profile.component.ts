@@ -1,30 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControlName } from '@angular/forms';
 
+import { GenericValidator } from '../shared/generic-validator';
 import { UserProfile } from './user-profile';
 import { UserProfileService} from './user-profile.service';
+import { Observable, merge, fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, AfterViewInit {
+  @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
+  
   pageHeader: string = "My Profile";
   profileForm: FormGroup;
   userProfile: UserProfile;
   errorMessage: string;
+  displayMessage: { [key: string]: string } = {};
+  private validationMessages: { [key: string]: { [key: string]: string } };
+  private genericValidator: GenericValidator;
 
   constructor(private titleService: Title,
               private fb: FormBuilder,
-              private userProfileService: UserProfileService) { }
+              private userProfileService: UserProfileService) { 
+
+      this.validationMessages = {
+        firstName: {
+          required: 'First name is required.',
+          maxlength: 'First name cannot exceed 20 characters.'
+        },
+        lastName: {
+          required: 'Last name is required.',
+          maxlength: 'Last name cannot exceed 20 characters.'
+        }
+      };
+      
+      this.genericValidator = new GenericValidator(this.validationMessages);
+  }
 
   ngOnInit(): void {
     this.titleService.setTitle('Peerz | ' + this.pageHeader);
     
     this.profileForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(3)]],
-      lastName: ['', [Validators.required, Validators.maxLength(50)]],
+      firstName: ['', [Validators.required, Validators.maxLength(20)]],
+      lastName: ['', [Validators.required, Validators.maxLength(20)]],
     });
 
     this.userProfileService.getUserProfile().subscribe({
@@ -37,6 +59,17 @@ export class ProfileComponent implements OnInit {
         });
       },
       error: err => this.errorMessage = err
+    });
+  }
+  
+  ngAfterViewInit(): void {
+    const controlBlurs: Observable<any>[] = this.formInputElements
+      .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
+
+    merge(this.profileForm.valueChanges, ...controlBlurs).pipe(
+      //debounceTime(800)
+    ).subscribe(value => {
+      this.displayMessage = this.genericValidator.processMessages(this.profileForm);
     });
   }
 
