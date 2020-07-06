@@ -1,6 +1,9 @@
+<div class="my-3 loader" *ngIf="!isLoaded">
+    <span class="spinner-border spinner-border-sm text-secondary"></span>
+    <span class="text-muted"> Loading data...</span>
+</div> 
 <h3>{{ pageHeader }}</h3>
-<div class="text-muted" *ngIf="!isLoaded"><icon class="fas fa-spinner"></icon> Loading data...</div>
-<hr />       
+<hr />
 <form novalidate (ngSubmit)="save()" [formGroup]="profileForm">
     <div class="form-group row mb-2">
         <label class="col-lg-2 col-form-label"
