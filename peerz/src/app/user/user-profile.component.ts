@@ -9,10 +9,10 @@ import { Observable, merge, fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.css']
 })
-export class ProfileComponent implements OnInit, AfterViewInit {
+export class UserProfileComponent implements OnInit, AfterViewInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
   
   pageHeader: string = "My Profile";

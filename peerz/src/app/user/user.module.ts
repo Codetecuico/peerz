@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { SharedModule } from '../shared/shared.module'
-import { ProfileComponent } from './profile.component';
+import { UserProfileComponent } from './user-profile.component';
 import { LoginComponent } from './login.component';
 import { AuthGuard } from './auth.guard';
 
@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'profile', 
     canActivate: [AuthGuard],
     canDeactivate: [UserProfileGuard],
-    component: ProfileComponent 
+    component: UserProfileComponent 
   },
   { path: 'login', component: LoginComponent }
 ];
@@ -27,7 +27,7 @@ const routes: Routes = [
     InMemoryWebApiModule.forRoot(UserProfileData)
   ],
   declarations: [
-    ProfileComponent,
+    UserProfileComponent,
     LoginComponent
   ]
 })
