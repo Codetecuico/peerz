@@ -16,6 +16,7 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
   
   pageHeader: string = "My Profile";
+  isLoaded: boolean = true;
   profileForm: FormGroup;
   userProfile: UserProfile;
   errorMessage: string;
@@ -43,6 +44,7 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('Peerz | ' + this.pageHeader);
+    this.isLoaded = false;
     
     this.profileForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.maxLength(20)]],
@@ -57,8 +59,12 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
           firstName: this.userProfile.firstName,
           lastName: this.userProfile.lastName
         });
+        this.isLoaded = true;
       },
-      error: err => this.errorMessage = err
+      error: err => {
+        this.errorMessage = err;        
+        this.isLoaded = true;
+      }
     });
   }
   
