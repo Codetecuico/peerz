@@ -23,8 +23,7 @@ export class UserProfileService {
 
   updateUserProfile(userProfile: UserProfile): Observable<UserProfile> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const url = `${this.userProfileUrl}`;
-    return this.http.put<UserProfile>(url, userProfile, { headers })
+    return this.http.put<UserProfile>(this.userProfileUrl, userProfile, { headers })
       .pipe(
         tap(() => console.log('updateUserProfile: ' + userProfile.id)),
         map(() => userProfile),
