@@ -10,6 +10,7 @@ import { LoginModule } from './login/login.module';
 import { HomeModule } from './home/home.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { UserModule } from './user/user.module';
+import { StudentModule } from './student/student.module';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { UserModule } from './user/user.module';
     HomeModule,
     DashboardModule,
     UserModule,
+    StudentModule,
     AppRoutingModule
   ],
   declarations: [AppComponent],
