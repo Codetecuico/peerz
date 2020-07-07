@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-import { AuthService } from './auth.service';
+import { AuthService } from '../user/auth.service';
 
 @Component({
   templateUrl: './login.component.html'
