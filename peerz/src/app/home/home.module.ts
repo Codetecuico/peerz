@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeRoutingModule } from './dashboard-routing.module';
+import { HomeRoutingModule } from './home-routing.module';
 
 @NgModule({
   imports: [
