@@ -3,8 +3,8 @@
 
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav ml-auto">
-      <li class="navbar-text" *ngIf="isLoggedIn">
-        <div><span class="fa fa-user-circle"></span> {{ userName }} </div>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link" [routerLink]="['/profile']"><span class="fa fa-user-circle"></span> {{ userName }}</a>
       </li>
       <li class="nav-item" *ngIf="!isLoggedIn">
         <a class="nav-link" [routerLink]="['/login']">Log In</a>
