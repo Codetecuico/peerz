@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren } from '@ang
 import { Title } from '@angular/platform-browser';
 import { FormBuilder, Validators, FormGroup, FormControlName } from '@angular/forms';
 
-import { GenericValidator } from '../shared/generic-validator';
+import { GenericValidator } from '../../shared/generic-validator';
 import { UserProfile } from './user-profile';
 import { UserProfileService} from './user-profile.service';
 import { Observable, merge, fromEvent } from 'rxjs';
