@@ -1,12 +1,17 @@
 <h3>{{ pageHeader }}</h3>
 <hr />
+<div class="row">
+  <div class="col-md-4 mb-3">
+    <input type="text" class="form-control" [(ngModel)]="listFilter" placeholder="Search" />
+  </div>
+</div>
 <div class="card mb-2" *ngFor="let student of filteredStudents">
   <div class="card-body row p-3">
       <div class="col-10">
         {{ student.lastName }}, {{ student.firstName }}
       </div>
       <div class="col-2 text-right">
-        <button class="btn btn-outline-primary btn-sm" [routerLink]="[]">Edit</button>
+        <button class="btn btn-outline-primary btn-sm px-3" [routerLink]="[]">Edit</button>
       </div>
   </div>
 </div>
