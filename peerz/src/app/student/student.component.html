@@ -1,22 +1,12 @@
 <h3>{{ pageHeader }}</h3>
 <hr />
-<div class="table-responsive">
-    <table class="table mb-0">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let student of filteredStudents">
-          <td>{{ student.firstName }}</td>
-          <td>{{ student.lastName }}</td>
-          <td style="width:120px">
-            <button class="btn btn-outline-primary btn-sm" [routerLink]="[]">Edit</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="card mb-2" *ngFor="let student of filteredStudents">
+  <div class="card-body row p-3">
+      <div class="col-10">
+        {{ student.lastName }}, {{ student.firstName }}
+      </div>
+      <div class="col-2 text-right">
+        <button class="btn btn-outline-primary btn-sm" [routerLink]="[]">Edit</button>
+      </div>
   </div>
+</div>

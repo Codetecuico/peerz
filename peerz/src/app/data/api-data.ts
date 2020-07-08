@@ -27,6 +27,16 @@ export class ApiData implements InMemoryDbService {
           id: 3,
           firstName: 'Gregorio',
           lastName: 'del Pilar',
+        },
+        {
+          id: 4,
+          firstName: 'Andres',
+          lastName: 'Bonifacio',
+        },
+        {
+          id: 5,
+          firstName: 'Diego',
+          lastName: 'Silang',
         }];
         
     return { userProfile, students };
