@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 
+import { TitleService } from '../shared/title.service';
 import { AuthService } from '../user/auth.service';
 
 @Component({
@@ -12,12 +12,12 @@ export class LoginComponent {
   errorMessage: string;
   pageTitle = 'Log In';
 
-  constructor(private titleService: Title,
+  constructor(private titleService: TitleService,
               private authService: AuthService,
               private router: Router) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Peerz | Login');
+    this.titleService.setTitle('Login');
   }
 
   login(loginForm: NgForm) {

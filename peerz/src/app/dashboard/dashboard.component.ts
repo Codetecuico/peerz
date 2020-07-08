@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { TitleService } from '../shared/title.service';
 
 @Component({
   templateUrl: './dashboard.component.html',
@@ -8,10 +8,10 @@ import { Title } from '@angular/platform-browser';
 export class DashboardComponent implements OnInit {
   pageHeader: string = "Dashboard";
 
-  constructor(private titleService: Title) { }
+  constructor(private titleService: TitleService) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Peerz | ' + this.pageHeader);
+    this.titleService.setTitle(this.pageHeader);
   }
 
 }

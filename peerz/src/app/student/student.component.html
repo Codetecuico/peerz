@@ -1,2 +1,22 @@
 <h3>{{ pageHeader }}</h3>
-<hr />   
+<hr />
+<div class="table-responsive">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of filteredStudents">
+          <td>{{ student.firstName }}</td>
+          <td>{{ student.lastName }}</td>
+          <td style="width:120px">
+            <button class="btn btn-outline-primary btn-sm" [routerLink]="[]">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

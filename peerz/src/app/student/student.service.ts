@@ -3,32 +3,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
-import { IUserProfile } from '../../shared/interfaces';
+import { IStudent } from '../shared/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserProfileService {
-  private userProfileUrl = 'api/userProfile';
+export class StudentService {
+  private studentsUrl = 'api/students';
 
   constructor(private http: HttpClient) { }
 
-  getUserProfile(): Observable<IUserProfile> {
-    return this.http.get<IUserProfile>(this.userProfileUrl)
+  getStudents(): Observable<IStudent[]> {
+    return this.http.get<IStudent[]>(this.studentsUrl)
       .pipe(
         tap(data => console.log(JSON.stringify(data))),
         catchError(this.handleError)
-      );
-  }
-
-  updateUserProfile(userProfile: IUserProfile): Observable<IUserProfile> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put<IUserProfile>(this.userProfileUrl, userProfile, { headers })
-      .pipe(
-        tap(() => console.log('updateUserProfile: ' + userProfile.id)),
-        map(() => userProfile),
-        catchError(this.handleError)
-      );
+      ); 
   }
 
   private handleError(err) {

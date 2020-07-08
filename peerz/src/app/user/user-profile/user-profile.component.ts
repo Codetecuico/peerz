@@ -1,9 +1,9 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChildren } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { FormBuilder, Validators, FormGroup, FormControlName } from '@angular/forms';
 
+import { TitleService } from '../../shared/title.service';
 import { GenericValidator } from '../../shared/generic-validator';
-import { UserProfile } from './user-profile';
+import { IUserProfile } from '../../shared/interfaces';
 import { UserProfileService} from './user-profile.service';
 import { Observable, merge, fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -18,13 +18,13 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
   pageHeader: string = "My Profile";
   isLoaded: boolean = true;
   profileForm: FormGroup;
-  userProfile: UserProfile;
+  userProfile: IUserProfile;
   errorMessage: string;
   displayMessage: { [key: string]: string } = {};
   private validationMessages: { [key: string]: { [key: string]: string } };
   private genericValidator: GenericValidator;
 
-  constructor(private titleService: Title,
+  constructor(private titleService: TitleService,
               private fb: FormBuilder,
               private userProfileService: UserProfileService) { 
 
@@ -43,7 +43,7 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Peerz | ' + this.pageHeader);
+    this.titleService.setTitle(this.pageHeader);
     this.isLoaded = false;
     
     this.profileForm = this.fb.group({
